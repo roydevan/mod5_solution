@@ -1,0 +1,61 @@
+<div class="container" ng-controller="MyInfoController as myinfo">
+<h2 ng-if="myinfo.items.length===0" id="menu-categories-title"
+class="text-center">Not Signed Up Yet.
+<div>
+<a ui-sref="public.signup"> Sign up Now!</a>
+</div>
+</h2>
+
+<h2 ng-if="myinfo.items.length!==0"
+class="text-center">Your Registered Details</h2>
+
+  <fieldset>
+    <form name='regForm' class="form-horizontal" novalidate ng-repeat="x in myinfo.items">
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{x.firstName}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{x.lastName}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{x.email}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{x.phone}}</p>
+        </div>
+      </div>
+
+    </form>
+  </fieldset>
+
+  <div class="menu-item-tile col-md-6" ng-repeat="x in myinfo.items">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="menu-item-photo">
+          <div>{{x.shortName}}</div>
+          <img class="img-responsive" width="250" height="150" ng-src="{{myinfo.basePath}}/images/{{x.shortName}}.jpg" alt="{{x.menuName}}">
+        </div>
+      </div>
+      <div class="menu-item-description col-sm-7">
+        <h3 class="menu-item-title">Favourite Dish : {{x.menuName}}</h3>
+        <p class="menu-item-details">{{x.menuDesc}}</p>
+      </div>
+    </div>
+    <hr class="visible-xs">
+  </div>
+</div>
